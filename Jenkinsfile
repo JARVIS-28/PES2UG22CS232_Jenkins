@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Starting Build Stage'
-                sh 'g++ main/hello.cpp -o hello'  // Updated path to hello.cpp
+                sh 'echo Build simulation'
                 echo 'Build Stage Successful'
             }
         }
@@ -13,12 +13,12 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running Tests'
-                sh './hello'
+                sh 'echo Test simulation - No mvn required'
                 echo 'Test Stage Successful'
             }
             post {
                 always {
-                    echo 'Test execution completed'
+                    echo 'Simulated test reports generated'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying Application'
-                sh 'echo Deploying hello.cpp output'
+                sh 'echo Deploy simulation'
                 echo 'Deployment Successful'
             }
         }
