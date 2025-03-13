@@ -5,29 +5,20 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Starting Build Stage'
-                sh 'echo Build simulation'
-                echo 'Build Stage Successful'
+                sh 'g++ main/hello.cpp -o hello -invalidflag' 
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running Tests'
-                sh 'echo Test simulation - No mvn required'
-                echo 'Test Stage Successful'
-            }
-            post {
-                always {
-                    echo 'Simulated test reports generated'
-                }
+                sh 'exit 1' 
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying Application'
-                sh 'echo Deploy simulation'
-                echo 'Deployment Successful'
+                sh 'cat nonexistent_file.txt' 
             }
         }
     }
